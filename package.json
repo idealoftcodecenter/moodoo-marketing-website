@@ -1,0 +1,25 @@
+{
+  "name": "moodoo-marketing-website",
+  "version": "1.0.0",
+  "description": "Moodoo marketing website with Landing + Privacy Policy + Contact Us pages",
+  "keywords": [
+    "Moodoo",
+    "Idealoft",
+    "Studio"
+  ],
+  "homepage": "https://github.com/idealoftcodecenter/moodoo-marketing-website#readme",
+  "bugs": {
+    "url": "https://github.com/idealoftcodecenter/moodoo-marketing-website/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idealoftcodecenter/moodoo-marketing-website.git"
+  },
+  "license": "ISC",
+  "author": "Idealoft Studio",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
