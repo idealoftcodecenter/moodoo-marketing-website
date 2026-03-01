@@ -1,0 +1,10 @@
+@mixin focus-ring {
+  outline: 2px solid var(--color-highlight);
+  outline-offset: 2px;
+}
+
+@mixin card-surface {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}

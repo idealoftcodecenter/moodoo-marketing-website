@@ -1,0 +1,39 @@
+:root {
+  --color-bg: #121212;
+  --color-surface: #171717;
+  --color-surface-2: #1f1f1f;
+  --color-surface-3: #272727;
+  --color-text: #dce1e8;
+  --color-muted: #dce1e8;
+  --color-border: #2e2e2e;
+  --color-border-strong: #444444;
+  --color-highlight: #e3c804;
+  --color-inverse-bg: #e3c804;
+  --color-inverse-text: #121212;
+
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --font-display: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+  --font-body: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+
+  --container: 1120px;
+  --header-height: 72px;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 2rem;
+  --space-8: 2.5rem;
+  --space-9: 3rem;
+  --space-10: 4rem;
+
+  --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.35);
+  --shadow-hard: 0 24px 60px rgba(0, 0, 0, 0.45);
+}

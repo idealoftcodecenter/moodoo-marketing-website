@@ -1,0 +1,339 @@
+@use "mixins";
+
+.btn {
+  border: 1px solid var(--color-highlight);
+  border-radius: var(--radius-sm);
+  background: var(--color-highlight);
+  color: var(--color-inverse-text);
+  font: inherit;
+  font-weight: 700;
+  padding: 0.72rem 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn--small {
+  padding: 0.55rem 0.9rem;
+  font-size: 0.9rem;
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-highlight);
+  border: 1px solid var(--color-highlight);
+}
+
+.inline-form {
+  width: min(460px, 100%);
+  margin-top: var(--space-5);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: stretch;
+  gap: var(--space-2);
+}
+
+.inline-form input,
+.modal-form input,
+.modal-form select,
+.modal-form textarea {
+  width: 100%;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--color-border);
+  background: #050505;
+  color: var(--color-text);
+  padding: 0.78rem 0.85rem;
+  font: inherit;
+}
+
+.inline-form input::placeholder,
+.modal-form input::placeholder,
+.modal-form textarea::placeholder {
+  color: #7d8288;
+}
+
+.form-hint {
+  color: var(--color-muted);
+  margin-top: var(--space-2);
+  font-size: 0.84rem;
+}
+
+.form-feedback {
+  margin-top: var(--space-2);
+  min-height: 1.25rem;
+  font-size: 0.86rem;
+  color: var(--color-text);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.feature-card {
+  @include mixins.card-surface;
+
+  padding: var(--space-5);
+  min-height: 180px;
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+}
+
+.feature-card p {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.feature-card.is-muted {
+  opacity: 0.32;
+}
+
+.section-cta {
+  margin-top: var(--space-6);
+  text-align: center;
+}
+
+.metric-carousel {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.carousel-control {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.carousel-track {
+  display: grid;
+}
+
+.metric-card {
+  @include mixins.card-surface;
+
+  display: none;
+  padding: var(--space-7);
+  min-height: 260px;
+  gap: var(--space-3);
+}
+
+.metric-card.is-active {
+  display: grid;
+}
+
+.metric-card h3 {
+  font-size: 1rem;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.metric-value {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: var(--color-highlight);
+}
+
+.metric-card p:not(.metric-value) {
+  color: var(--color-muted);
+}
+
+.accordion {
+  @include mixins.card-surface;
+
+  overflow: hidden;
+}
+
+.accordion-item + .accordion-item {
+  border-top: 1px solid var(--color-border);
+}
+
+.accordion-trigger {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  color: var(--color-text);
+  font: inherit;
+  font-weight: 600;
+  padding: var(--space-5);
+  cursor: pointer;
+  position: relative;
+}
+
+.accordion-trigger::after {
+  content: "▾";
+  position: absolute;
+  right: var(--space-5);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-muted);
+}
+
+.accordion-trigger[aria-expanded="true"]::after {
+  content: "▴";
+}
+
+.accordion-panel {
+  padding: 0 var(--space-5) var(--space-5);
+}
+
+.accordion-panel p {
+  color: var(--color-muted);
+}
+
+.check-list {
+  list-style: none;
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.check-list li::before {
+  content: "●";
+  position: absolute;
+  left: 0;
+  color: var(--color-highlight);
+}
+
+.price-caption {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-1);
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin-bottom: var(--space-5);
+}
+
+.price span {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: none;
+}
+
+.modal.is-open {
+  display: grid;
+  place-items: center;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.modal__dialog {
+  @include mixins.card-surface;
+
+  position: relative;
+  z-index: 1;
+  width: min(560px, 92vw);
+  padding: var(--space-7);
+  background: linear-gradient(170deg, #1b1b1b, #121212);
+  box-shadow: var(--shadow-hard);
+}
+
+.modal__close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.modal__dialog > p {
+  margin-top: var(--space-2);
+  color: var(--color-muted);
+}
+
+.modal-form {
+  margin-top: var(--space-5);
+  display: grid;
+  gap: var(--space-4);
+}
+
+.modal-form label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+.modal-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.modal-form__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+@media (max-width: 960px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inline-form {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-carousel {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-carousel .carousel-control {
+    display: none;
+  }
+
+  .modal__dialog {
+    padding: var(--space-6);
+  }
+
+  .modal-form__actions {
+    grid-template-columns: 1fr;
+  }
+}

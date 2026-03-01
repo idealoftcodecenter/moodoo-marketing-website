@@ -2,6 +2,7 @@
   "name": "moodoo-marketing-website",
   "version": "1.0.0",
   "description": "Moodoo marketing website with Landing + Privacy Policy + Contact Us pages",
+  "private": true,
   "keywords": [
     "Moodoo",
     "Idealoft",
@@ -17,9 +18,21 @@
   },
   "license": "ISC",
   "author": "Idealoft Studio",
-  "type": "commonjs",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build:css && npm run sync:jquery",
+    "build:css": "sass --no-source-map src/scss/main.scss assets/css/styles.css",
+    "watch:css": "sass --watch src/scss/main.scss:assets/css/styles.css",
+    "serve": "python3 -m http.server 8080",
+    "sync:jquery": "node ./scripts/sync-jquery.js",
+    "postinstall": "npm run sync:jquery && npm run build:css"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "jquery": "^4.0.0"
+  },
+  "devDependencies": {
+    "sass": "^1.97.3"
   }
 }
