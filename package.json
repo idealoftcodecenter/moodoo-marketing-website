@@ -1,38 +1,49 @@
 {
-  "name": "moodoo-marketing-website",
-  "version": "1.0.0",
-  "description": "Moodoo marketing website with Landing + Privacy Policy + Contact Us pages",
-  "private": true,
-  "keywords": [
-    "Moodoo",
-    "Idealoft",
-    "Studio"
-  ],
-  "homepage": "https://github.com/idealoftcodecenter/moodoo-marketing-website#readme",
-  "bugs": {
-    "url": "https://github.com/idealoftcodecenter/moodoo-marketing-website/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/idealoftcodecenter/moodoo-marketing-website.git"
-  },
-  "license": "ISC",
-  "author": "Idealoft Studio",
-  "scripts": {
-    "build": "npm run build:css && npm run sync:jquery",
-    "build:css": "sass --no-source-map src/scss/main.scss assets/css/styles.css",
-    "watch:css": "sass --watch src/scss/main.scss:assets/css/styles.css",
-    "serve": "python3 -m http.server 8080",
-    "sync:jquery": "node ./scripts/sync-jquery.js",
-    "postinstall": "npm run sync:jquery && npm run build:css"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "dependencies": {
-    "jquery": "^4.0.0"
-  },
-  "devDependencies": {
-    "sass": "^1.97.3"
-  }
+    "name": "moodoo-marketing-website",
+    "version": "1.0.0",
+    "description": "Moodoo marketing website with Landing + Privacy Policy + Contact Us pages",
+    "private": true,
+    "keywords": [
+        "Moodoo",
+        "Idealoft",
+        "Studio"
+    ],
+    "homepage": "https://github.com/idealoftcodecenter/moodoo-marketing-website#readme",
+    "bugs": {
+        "url": "https://github.com/idealoftcodecenter/moodoo-marketing-website/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/idealoftcodecenter/moodoo-marketing-website.git"
+    },
+    "license": "ISC",
+    "author": "Idealoft Studio",
+    "scripts": {
+        "build": "npm run build:css && npm run sync:jquery",
+        "build:css": "sass --no-source-map src/scss/main.scss assets/css/styles.css && postcss assets/css/styles.css --replace --no-map",
+        "watch:css": "sass --watch src/scss/main.scss:assets/css/styles.css",
+        "serve": "python3 -m http.server 8080",
+        "sync:jquery": "node ./scripts/sync-jquery.js",
+        "postinstall": "npm run sync:jquery && npm run build:css",
+        "format": "prettier --write \"*.html\" \"*.json\" \"*.md\" \"assets/js/**/*.js\" \"src/scss/**/*.scss\" \"scripts/**/*.js\""
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "browserslist": [
+        "> 0.5%",
+        "last 2 versions",
+        "Firefox ESR",
+        "not dead"
+    ],
+    "dependencies": {
+        "jquery": "^4.0.0"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.27",
+        "postcss": "^8.5.6",
+        "postcss-cli": "^11.0.1",
+        "prettier": "^3.8.1",
+        "sass": "^1.97.3"
+    }
 }

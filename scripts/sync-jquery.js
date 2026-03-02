@@ -6,14 +6,14 @@ const targetDir = path.join(__dirname, "..", "assets", "vendor", "jquery");
 const targetFile = path.join(targetDir, "jquery.min.js");
 
 try {
-  if (!fs.existsSync(sourceFile)) {
-    throw new Error("jquery.min.js was not found in node_modules. Run npm install first.");
-  }
+    if (!fs.existsSync(sourceFile)) {
+        throw new Error("jquery.min.js was not found in node_modules. Run npm install first.");
+    }
 
-  fs.mkdirSync(targetDir, { recursive: true });
-  fs.copyFileSync(sourceFile, targetFile);
-  console.log(`jQuery copied to ${targetFile}`);
+    fs.mkdirSync(targetDir, { recursive: true });
+    fs.copyFileSync(sourceFile, targetFile);
+    console.log(`jQuery copied to ${targetFile}`);
 } catch (error) {
-  console.error(`Failed to sync jQuery: ${error.message}`);
-  process.exit(1);
+    console.error(`Failed to sync jQuery: ${error.message}`);
+    process.exit(1);
 }
