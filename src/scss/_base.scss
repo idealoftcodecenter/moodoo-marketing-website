@@ -119,3 +119,11 @@ ol {
 .skip-link:focus {
     top: var(--space-4);
 }
+
+.white-gradient-text {
+    background: linear-gradient(90deg, #dce1e8, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}

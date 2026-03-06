@@ -9,3 +9,4 @@ dist/
 coverage/
 .vscode/
 .sass-cache/
+contact-mail-config.local.php

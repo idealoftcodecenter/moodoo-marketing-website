@@ -6,7 +6,7 @@ Static marketing site for Moodoo with semantic HTML, SCSS architecture, and jQue
 
 - `index.html`: landing page structure (desktop + mobile responsive)
 - `privacy-policy.html`: privacy policy page with table-of-contents sidebar
-- `contact.html`: temporary placeholder page
+- `contact.html`: responsive contact page with validated enquiry form
 
 ## Stack
 
@@ -37,10 +37,15 @@ moodoo-marketing-website/
 │       ├── _layout.scss
 │       ├── _components.scss
 │       ├── _pages.scss
+│       ├── _utilities.scss
 │       └── main.scss
 ├── index.html
 ├── privacy-policy.html
 ├── contact.html
+├── contact-submit.php
+├── contact-mail-config.php
+├── contact-mail-config.local.php.example
+├── contact-smtp-mailer.php
 ├── package.json
 └── package-lock.json
 ```
@@ -63,3 +68,12 @@ moodoo-marketing-website/
 
 - Visual palette intentionally uses grayscale tokens only for structure-first development.
 - Theme styling can be introduced later by updating `src/scss/_tokens.scss` and component styles.
+- Utility classes are available in Tailwind-like format for quick HTML-only edits (examples: `flex`, `items-center`, `justify-between`, `gap-4`, `px-6`, `text-highlight`, `bg-surface`, `md:flex`, `lg:grid-cols-3`).
+
+## Contact Form Email Setup (Google App Password)
+
+1. Copy `contact-mail-config.local.php.example` to `contact-mail-config.local.php`.
+2. Put your Google mailbox app password in the `password` field.
+3. Keep `contact-mail-config.local.php` out of git (already ignored).
+4. Run the site with PHP (not `python -m http.server`) so the submit endpoint works:
+    - `php -S localhost:8080`
