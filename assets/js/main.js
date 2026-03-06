@@ -59,6 +59,7 @@ $(function () {
     $("[data-inline-waitlist]").each(function () {
         const $form = $(this);
         const $feedback = $form.parent().find("[data-inline-feedback]").first();
+        const $submitButton = $form.find('button[type="submit"]').first();
 
         $form.on("submit", function (event) {
             event.preventDefault();
@@ -69,8 +70,33 @@ $(function () {
                 return;
             }
 
-            $feedback.text("Thanks. You are on the waitlist.");
-            this.reset();
+            $submitButton.prop("disabled", true).text("Sending...");
+
+            $.ajax({
+                url: $form.attr("action") || "./lead-submit.php",
+                method: "POST",
+                data: $form.serialize(),
+                dataType: "json",
+                timeout: 15000,
+            })
+                .done(function (response) {
+                    if (response && response.ok) {
+                        $feedback.text(
+                            response.message || "Thanks. You are on the waitlist and our team has been notified.",
+                        );
+                        $form.get(0).reset();
+                        return;
+                    }
+
+                    $feedback.text((response && response.message) || "Unable to join the waitlist right now.");
+                })
+                .fail(function (xhr) {
+                    const response = xhr.responseJSON || {};
+                    $feedback.text(response.message || "Unable to join the waitlist right now.");
+                })
+                .always(function () {
+                    $submitButton.prop("disabled", false).text("Join Waitlist");
+                });
         });
     });
 
@@ -310,9 +336,86 @@ $(function () {
 
         $("#enquiry-form").on("submit", function (event) {
             event.preventDefault();
+            const $form = $(this);
             const $feedback = $("[data-modal-feedback]");
-            $feedback.text("Enquiry submitted. We will contact you within 1-2 business days.");
-            this.reset();
+            const $submitButton = $form.find('button[type="submit"]').first();
+
+            const workEmail = String($form.find('input[name="workEmail"]').val() || "").trim();
+            const companyName = String($form.find('input[name="companyName"]').val() || "")
+                .replace(/\s+/g, " ")
+                .trim();
+            const teamSize = String($form.find('select[name="teamSize"]').val() || "").trim();
+            const supportNeed = String($form.find('textarea[name="supportNeed"]').val() || "")
+                .replace(/\r\n/g, "\n")
+                .replace(/\r/g, "\n")
+                .trim();
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(workEmail)) {
+                $feedback.text("Enter a valid work email address.");
+                return;
+            }
+
+            if (companyName.length < 2 || companyName.length > 120) {
+                $feedback.text("Enter a valid company name (2-120 characters).");
+                return;
+            }
+
+            if (!teamSize) {
+                $feedback.text("Please select your team size.");
+                return;
+            }
+
+            if (supportNeed.length > 1500) {
+                $feedback.text("Your message is too long. Please keep it under 1500 characters.");
+                return;
+            }
+
+            $submitButton.prop("disabled", true).text("Sending...");
+
+            $.ajax({
+                url: $form.attr("action") || "./lead-submit.php",
+                method: "POST",
+                data: $form.serialize(),
+                dataType: "json",
+                timeout: 15000,
+            })
+                .done(function (response) {
+                    if (response && response.ok) {
+                        $feedback.text(
+                            response.message ||
+                                "Enquiry submitted and our team has been notified. We will contact you within 1-2 business days.",
+                        );
+                        $form.get(0).reset();
+                        return;
+                    }
+
+                    if (response && response.errors) {
+                        const firstError = Object.values(response.errors)[0];
+                        if (typeof firstError === "string" && firstError.trim() !== "") {
+                            $feedback.text(firstError);
+                            return;
+                        }
+                    }
+
+                    $feedback.text(
+                        (response && response.message) || "Unable to send enquiry right now. Please try again.",
+                    );
+                })
+                .fail(function (xhr) {
+                    const response = xhr.responseJSON || {};
+                    if (response.errors) {
+                        const firstError = Object.values(response.errors)[0];
+                        if (typeof firstError === "string" && firstError.trim() !== "") {
+                            $feedback.text(firstError);
+                            return;
+                        }
+                    }
+
+                    $feedback.text(response.message || "Unable to send enquiry right now. Please try again.");
+                })
+                .always(function () {
+                    $submitButton.prop("disabled", false).text("Send Enquiry");
+                });
         });
     }
 

@@ -4,27 +4,33 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Moodoo | Team Emotional Intelligence Platform</title>
-		<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-		<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-		<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-		<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-		<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-		<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-		<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-		<link rel="manifest" href="/manifest.json">
-		<meta name="msapplication-TileColor" content="#ffffff">
-		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-		<meta name="theme-color" content="#ffffff">
-        <meta name="description" content="Moodoo helps organizations understand and improve team emotional health with daily mood check-ins and insights." />
+        <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta
+            name="description"
+            content="Moodoo helps organizations understand and improve team emotional health with daily mood check-ins and insights."
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
         <link rel="stylesheet" href="./assets/css/styles.css" />
     </head>
     <body class="page page-home">
@@ -44,11 +50,34 @@
                             into meaningful patterns.
                         </p>
 
-						<form class="inline-form" data-inline-waitlist novalidate>
-							<label class="sr-only" for="hero-email">Work email address</label>
-							<input id="hero-email" name="email" type="email" autocomplete="email" placeholder="your email address" required />
-							<button class="btn" type="submit">Join Waitlist</button>
-						</form>
+                        <form
+                            class="inline-form"
+                            action="./lead-submit.php"
+                            method="post"
+                            data-inline-waitlist
+                            novalidate
+                        >
+                            <input type="hidden" name="form_type" value="waitlist" />
+                            <input type="hidden" name="source" value="hero" />
+                            <input
+                                class="sr-only"
+                                type="text"
+                                name="website"
+                                tabindex="-1"
+                                autocomplete="off"
+                                aria-hidden="true"
+                            />
+                            <label class="sr-only" for="hero-email">Work email address</label>
+                            <input
+                                id="hero-email"
+                                name="email"
+                                type="email"
+                                autocomplete="email"
+                                placeholder="your email address"
+                                required
+                            />
+                            <button class="btn" type="submit">Join Waitlist</button>
+                        </form>
                         <p class="form-hint">No Spam. Cancel Anytime.</p>
                         <p class="form-feedback" data-inline-feedback aria-live="polite"></p>
                     </div>
@@ -299,7 +328,17 @@
                 <div class="container cta-block__inner">
                     <h2 id="cta-title">Ready to understand your team?</h2>
                     <p>Join the waitlist today for early access, product updates, and founding member perks.</p>
-                    <form class="inline-form" data-inline-waitlist novalidate>
+                    <form class="inline-form" action="./lead-submit.php" method="post" data-inline-waitlist novalidate>
+                        <input type="hidden" name="form_type" value="waitlist" />
+                        <input type="hidden" name="source" value="cta" />
+                        <input
+                            class="sr-only"
+                            type="text"
+                            name="website"
+                            tabindex="-1"
+                            autocomplete="off"
+                            aria-hidden="true"
+                        />
                         <label class="sr-only" for="cta-email">Work email address</label>
                         <input
                             id="cta-email"
@@ -343,7 +382,16 @@
                     Tell us about your team and we will share a tailored quote within 1 to 2 business days.
                 </p>
 
-                <form id="enquiry-form" class="modal-form" novalidate>
+                <form id="enquiry-form" class="modal-form" action="./lead-submit.php" method="post" novalidate>
+                    <input type="hidden" name="form_type" value="enquiry" />
+                    <input
+                        class="sr-only"
+                        type="text"
+                        name="website"
+                        tabindex="-1"
+                        autocomplete="off"
+                        aria-hidden="true"
+                    />
                     <label for="work-email">Work Email</label>
                     <input
                         id="work-email"
